@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Happy Birthday Nickelodian!</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Rubik+Mono+One&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff1d0;--fg:#2b1055;--card:#ffffff;--orange:#ff6a13;--green:#6fd12a;--pink:#ff3d8b;--muted:#6b5a8e;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1b0a38;--fg:#fff3d6;--card:#2d1560;--muted:#b9a6e6}}
+:root[data-theme="dark"]{--bg:#1b0a38;--fg:#fff3d6;--card:#2d1560;--muted:#b9a6e6}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:'Baloo 2','Nirmala UI',system-ui,sans-serif;font-weight:500;overflow-x:hidden;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+canvas#fx{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:50}
+section{padding:72px 20px;max-width:760px;margin:0 auto;position:relative}
+h2{font-family:'Rubik Mono One','Baloo 2',sans-serif;font-size:clamp(1.4rem,6vw,2.2rem);line-height:1.15;margin:0 0 8px;text-align:center}
+.sub{text-align:center;color:var(--muted);margin:0 0 32px}
+/* hero */
+.hero{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding-top:40px;overflow:hidden;max-width:none}
+.blob{position:absolute;border-radius:50% 45% 55% 40%;z-index:0;will-change:transform;animation:morph 9s ease-in-out infinite}
+.b1{width:340px;height:340px;background:var(--orange);top:6%;left:-90px}
+.b2{width:260px;height:260px;background:var(--green);bottom:8%;right:-70px;animation-delay:-4s}
+@keyframes morph{50%{transform:translate3d(0,-24px,0) scale(1.06)}}
+section.off *,section.off *::before{animation-play-state:paused!important}
+.hero>*{position:relative;z-index:1}
+.hb{font-family:'Rubik Mono One',sans-serif;font-size:clamp(1rem,4.5vw,1.6rem);background:var(--fg);color:var(--bg);padding:6px 16px;border-radius:99px;transform:rotate(-3deg)}
+#name{font-family:'Rubik Mono One',sans-serif;font-size:clamp(2.4rem,13vw,6rem);line-height:1;margin:24px 0 10px;cursor:pointer;user-select:none;color:var(--fg);text-shadow:4px 4px 0 var(--orange),8px 8px 0 var(--green)}
+#name span{display:inline-block;animation:pop .55s cubic-bezier(.2,1.6,.4,1)}
+@keyframes pop{0%{transform:scale(.3) rotate(-12deg);opacity:0}100%{transform:none;opacity:1}}
+.shake{animation:shake .4s}
+@keyframes shake{25%{transform:translateX(-10px) rotate(-2deg)}75%{transform:translateX(10px) rotate(2deg)}}
+.hint{color:var(--muted);margin-top:18px;animation:bob 1.6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(8px)}}
+.float{position:absolute;font-size:2rem;z-index:1;will-change:transform}
+/* reveal */
+.rv{opacity:0;transform:translate3d(0,32px,0);transition:opacity .5s ease,transform .5s ease-out}
+.rv.in{opacity:1;transform:none}
+/* flip cards */
+.cards{display:grid;gap:18px}
+.card{perspective:900px;cursor:pointer;min-height:150px}
+.card .in{position:relative;width:100%;min-height:150px;transition:transform .7s cubic-bezier(.3,1.3,.4,1);transform-style:preserve-3d}
+.card.flip .in{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;border-radius:22px;padding:20px;display:flex;flex-direction:column;justify-content:center;backface-visibility:hidden;-webkit-backface-visibility:hidden;border:3px solid var(--fg);background:var(--card);box-shadow:6px 6px 0 var(--fg)}
+.face b{font-size:1.2rem}
+.face small{color:var(--muted);margin-top:8px}
+.back{transform:rotateY(180deg);background:var(--orange);color:#1b0a38}
+.back small{color:#1b0a38}
+/* meters */
+.meter{margin:0 0 18px}
+.meter div.l{display:flex;justify-content:space-between;font-weight:700}
+.bar{height:20px;border-radius:99px;border:3px solid var(--fg);background:var(--card);overflow:hidden}
+.bar i{display:block;height:100%;width:100%;transform:scaleX(0);transform-origin:left;background:linear-gradient(90deg,var(--orange),var(--pink));transition:transform 1.4s cubic-bezier(.2,.9,.3,1)}
+/* balloons */
+.sky{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
+.bl{width:74px;height:92px;border-radius:50% 50% 48% 48%;border:0;cursor:pointer;position:relative;animation:sway 3s ease-in-out infinite;font-size:1.6rem}
+.bl::after{content:"";position:absolute;left:50%;bottom:-26px;width:2px;height:26px;background:var(--fg);opacity:.5}
+.bl:nth-child(odd){animation-delay:-1.4s}
+@keyframes sway{50%{transform:translateY(-14px) rotate(4deg)}}
+.bl.pop{animation:burst .25s forwards}
+@keyframes burst{to{transform:scale(1.8);opacity:0}}
+#wish{min-height:3.2em;text-align:center;font-size:1.3rem;font-weight:800;margin-top:44px}
+/* cake */
+.cake{text-align:center;position:relative;margin-top:10px}
+.candles{display:flex;gap:26px;justify-content:center}
+.can{width:14px;height:48px;background:var(--pink);border-radius:4px;position:relative;cursor:pointer;border:0;padding:0}
+.can::before{content:"";position:absolute;left:50%;top:-22px;width:14px;height:22px;margin-left:-7px;background:radial-gradient(#fff 15%,#ffc400 45%,var(--orange) 75%);border-radius:50% 50% 50% 50%/70% 70% 30% 30%;animation:flame .3s ease-in-out infinite alternate;transform-origin:bottom}
+.can.off::before{display:none}
+@keyframes flame{to{transform:scale(1.15,.88) rotate(5deg)}}
+.tier{height:46px;margin:0 auto;border-radius:12px;border:3px solid var(--fg)}
+.t1{width:150px;background:var(--green)}.t2{width:220px;background:var(--orange)}.t3{width:290px;max-width:90%;background:var(--pink)}
+#cakemsg{margin-top:20px;font-size:1.2rem;font-weight:800;min-height:2.6em}
+/* runaway */
+.fin{text-align:center;min-height:210px;position:relative}
+.btn{font:inherit;font-weight:800;font-size:1.1rem;padding:14px 26px;border-radius:99px;border:3px solid var(--fg);background:var(--green);color:#1b0a38;cursor:pointer;box-shadow:4px 4px 0 var(--fg);transition:transform .15s}
+.btn:active{transform:scale(.92)}
+#run{background:var(--pink);position:relative;transition:transform .25s cubic-bezier(.3,1.5,.5,1)}
+.row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:24px;padding:20px 0}
+#toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,120px);background:var(--fg);color:var(--bg);padding:10px 20px;border-radius:99px;font-weight:700;z-index:60;transition:transform .35s cubic-bezier(.3,1.5,.5,1);max-width:90vw;text-align:center}
+#toast.show{transform:translate(-50%,0)}
+footer{text-align:center;color:var(--muted);padding:40px 20px 60px}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01s!important;transition-duration:.01s!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<canvas id="fx"></canvas>
+<div id="toast" role="status"></div>
+
+<section class="hero" id="top">
+  <div class="blob b1"></div><div class="blob b2"></div>
+  <span class="float" data-s=".25" style="left:12%;top:18%">🎈</span>
+  <span class="float" data-s="-.2" style="right:12%;top:26%">🎂</span>
+  <span class="float" data-s=".35" style="left:18%;bottom:20%">🥳</span>
+  <span class="float" data-s="-.3" style="right:16%;bottom:24%">🍕</span>
+  <div class="hb">🎉 HAPPY BIRTHDAY 🎉</div>
+  <h1 id="name" aria-live="polite"><span>Nikhil</span></h1>
+  <div>(passport pe Adharv Yadav, asli naam: Nickelodian)</div>
+  <div class="hint">naam pe tap kar, ya kahin bhi tap kar ↓</div>
+</section>
+
+<section>
+  <h2 class="rv">Naam ka Lafda</h2>
+  <p class="sub rv">Passport pe: Adharv Yadav. Asli naam: Nickelodian. Galti se: Nikhil.</p>
+  <div class="cards">
+    <div class="card rv"><div class="in"><div class="face"><b>Nikhil ya Nickelodian?</b><small>tap kar, sach bahar aayega</small></div><div class="face back"><b>Nickelodian. Bas Nickelodian.</b><small>Nikhil toh galti se nikal jata hai. Adharv Yadav sirf passport pe chalta hai.</small></div></div></div>
+    <div class="card rv"><div class="in"><div class="face"><b>Reply kab karega?</b><small>"Seen 3 din pehle"</small></div><div class="face back"><b>Tu WiFi nahi, sarkari dak seva hai 📮</b><small>Message pahunch jata hai. Bas jawab ka koi guarantee nahi.</small></div></div></div>
+    <div class="card rv"><div class="in"><div class="face"><b>"Aaj pakka plan banate hain"</b><small>tera 47th pakka plan</small></div><div class="face back"><b>Plan sirf group mein zinda rehte hain 💀</b><small>Bahar nikalne ka plan 2019 se pending hai.</small></div></div></div>
+    <div class="card rv"><div class="in"><div class="face"><b>Bill aaya toh?</b><small>suspense...</small></div><div class="face back"><b>Achanak network chala jata hai 📵</b><small>Aaj birthday hai bhai, aaj toh nikaal.</small></div></div></div>
+  </div>
+</section>
+
+<section>
+  <h2 class="rv">Bhai ka Report Card</h2>
+  <p class="sub rv">Scientifically bilkul galat, emotionally bilkul sahi.</p>
+  <div class="meter rv"><div class="l"><span>Bhai-pan</span><span>110%</span></div><div class="bar"><i data-w="100"></i></div></div>
+  <div class="meter rv"><div class="l"><span>Khane ki bhookh</span><span>999%</span></div><div class="bar"><i data-w="100"></i></div></div>
+  <div class="meter rv"><div class="l"><span>Sone ki kala</span><span>100%</span></div><div class="bar"><i data-w="96"></i></div></div>
+  <div class="meter rv"><div class="l"><span>Dimaag ka istemaal</span><span>37%</span></div><div class="bar"><i data-w="37"></i></div></div>
+  <div class="meter rv"><div class="l"><span>Reply ki speed</span><span>4%</span></div><div class="bar"><i data-w="4"></i></div></div>
+</section>
+
+<section>
+  <h2 class="rv">Gubbare Phodo 🎈</h2>
+  <p class="sub rv">Har gubbare mein ek dua (ya gaali, pyaar se)</p>
+  <div class="sky" id="sky"></div>
+  <div id="wish">Ek gubbara phod, Nickelodian!</div>
+</section>
+
+<section>
+  <h2 class="rv">Cake Kaatne se Pehle</h2>
+  <p class="sub rv">Mombatti tap karke bujha. Teeno. Phook marne ki zaroorat nahi.</p>
+  <div class="cake rv">
+    <div class="candles" id="candles"><button class="can" aria-label="candle 1"></button><button class="can" aria-label="candle 2"></button><button class="can" aria-label="candle 3"></button></div>
+    <div class="tier t1"></div><div class="tier t2"></div><div class="tier t3"></div>
+    <div id="cakemsg">Pehla piece mera, yaad rakhna.</div>
+  </div>
+</section>
+
+<section class="fin">
+  <h2 class="rv">Ab Sabse Zaroori Sawal</h2>
+  <p class="sub rv">Party kab de raha hai, Nickelodian?</p>
+  <div class="row rv">
+    <button class="btn" id="yes">Haan, de dunga 😎</button>
+    <button class="btn" id="run">Nahi de sakta 😬</button>
+  </div>
+</section>
+
+<footer>Made with pyaar, thodi si bezzati aur bahut saare confetti ke saath.<br>Happy Birthday, Nickelodian 🎂</footer>
+
+<script>
+(function(){
+var $=function(s,r){return (r||document).querySelector(s)},$$=function(s,r){return [].slice.call((r||document).querySelectorAll(s))};
+var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+/* confetti */
+var cv=$('#fx'),cx=cv.getContext('2d'),P=[],run=false,coarse=matchMedia('(pointer:coarse)').matches,D=coarse?1:Math.min(window.devicePixelRatio||1,1.5),COL=['#ff6a13','#6fd12a','#ff3d8b','#ffc400','#7a5cff'],EM=['🎉','🎈','🍕','🎂','😂'],SP=[],lw=0;
+EM.forEach(function(e){var c=document.createElement('canvas');c.width=c.height=48;var g=c.getContext('2d');g.font='36px serif';g.textAlign='center';g.textBaseline='middle';g.fillText(e,24,26);SP.push(c)});
+function size(){lw=innerWidth;cv.width=innerWidth*D;cv.height=innerHeight*D;cx.setTransform(D,0,0,D,0,0)}
+size();addEventListener('resize',function(){if(innerWidth!==lw)size()});
+function burst(x,y,n,em){n=Math.round(n*(coarse?.5:1));if(reduce)n=Math.min(n,8);if(P.length>140)return;for(var i=0;i<n;i++){var a=Math.random()*6.28,s=3+Math.random()*7;P.push({x:x,y:y,vx:Math.cos(a)*s,vy:Math.sin(a)*s-5,c:COL[i%5],e:em&&i%5==0?SP[Math.random()*5|0]:null,l:60+Math.random()*30})}if(!run){run=true;requestAnimationFrame(tick)}}
+function tick(){cx.clearRect(0,0,innerWidth,innerHeight);var q=[];for(var i=0;i<P.length;i++){var p=P[i];p.vy+=.3;p.vx*=.99;p.x+=p.vx;p.y+=p.vy;if(--p.l<=0||p.y>innerHeight+20)continue;if(p.e)cx.drawImage(p.e,p.x-11,p.y-11,22,22);else{cx.fillStyle=p.c;cx.fillRect(p.x,p.y,8,5)}q.push(p)}P=q;if(P.length)requestAnimationFrame(tick);else run=false}
+addEventListener('pointerdown',function(e){burst(e.clientX,e.clientY,22,true)});
+/* toast */
+var tt;function toast(m){var t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(tt);tt=setTimeout(function(){t.classList.remove('show')},2200)}
+/* name swapper */
+var N=['Nikhil','Adharv Yadav','Nickelodian'],T=['Arre nahi, Nikhil nahi!','Adharv Yadav? Ye toh bas passport wala naam hai!','Haan ab sahi. Nickelodian, asli naam!'],ni=0,nm=$('#name');
+function setName(i){ni=i%3;nm.innerHTML='<span>'+N[ni]+'</span>'}
+nm.addEventListener('click',function(){setName(ni+1);nm.classList.remove('shake');void nm.offsetWidth;nm.classList.add('shake');toast(T[ni])});
+var auto=setInterval(function(){if(ni<2)setName(ni+1);else clearInterval(auto)},2200);
+nm.addEventListener('click',function(){clearInterval(auto)});
+/* reveal + meters */
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');var b=$('i',e.target);if(b)b.style.transform='scaleX('+b.dataset.w/100+')';io.unobserve(e.target)}})},{threshold:.2});
+$$('.rv').forEach(function(el,i){el.style.transitionDelay=(i%4)*70+'ms';io.observe(el)});
+/* parallax */
+var fl=$$('.float'),tk=false;addEventListener('scroll',function(){if(tk||scrollY>innerHeight*1.2)return;tk=true;requestAnimationFrame(function(){tk=false;var y=scrollY;fl.forEach(function(f){f.style.transform='translate3d(0,'+(y*f.dataset.s)+'px,0)'})})},{passive:true});
+/* pause offscreen animations */
+var po=new IntersectionObserver(function(es){es.forEach(function(e){e.target.classList.toggle('off',!e.isIntersecting)})},{rootMargin:'100px'});$$('section').forEach(function(x){po.observe(x)});
+/* flip cards */
+$$('.card').forEach(function(c){c.addEventListener('click',function(){c.classList.toggle('flip');if(c.classList.contains('flip')){var r=c.getBoundingClientRect();burst(r.left+r.width/2,r.top+r.height/2,14,true)}})});
+/* balloons */
+var W=['Nickelodian bhai, party kab?','Nikhil bolne wale ko maaf kar do 🧡','Cake ka pehla piece mera hai.','Aaj ka din tera, kal ka udhaar mera.','Dua hai tu kabhi serious na ho.','Kharcha tera, treat teri!','Ek saal aur budha ho gaya, mubarak!','Reply kar de bhai, birthday pe toh.'],bc=['#ff6a13','#6fd12a','#ff3d8b','#ffc400','#7a5cff'],sky=$('#sky'),wi=0;
+W.forEach(function(w,i){var b=document.createElement('button');b.className='bl';b.style.background=bc[i%5];b.setAttribute('aria-label','balloon');b.textContent='🎈';b.addEventListener('click',function(e){e.stopPropagation();var r=b.getBoundingClientRect();burst(r.left+37,r.top+46,26,false);b.classList.add('pop');b.disabled=true;$('#wish').textContent=w;toast('POP! 💥')});sky.appendChild(b)});
+/* cake */
+var off=0;$$('.can').forEach(function(c){c.addEventListener('click',function(){if(c.classList.contains('off'))return;c.classList.add('off');off++;if(off==3){var r=$('.cake').getBoundingClientRect();burst(innerWidth/2,r.top+40,80,true);setTimeout(function(){burst(innerWidth/4,r.top+80,50,true);burst(innerWidth*3/4,r.top+80,50,true)},250);$('#cakemsg').textContent='Wish mang li? Ab party ka sochna mat bhoolna 😏'}else $('#cakemsg').textContent=(3-off)+' bachi hain, jaldi kar!'})});
+/* runaway */
+var rb=$('#run'),dodge=0,msgs=['Pakad ke dikha 😝','Itni jaldi nahi!','Haath se nikal gaya','Thak gaya? 😂'];
+function flee(e){if(dodge>=5){rb.textContent='Chal theek hai, de dunga 🥲';return}dodge++;if(e&&e.preventDefault)e.preventDefault();var x=(Math.random()-.5)*Math.min(innerWidth-160,320),y=(Math.random()-.5)*140;rb.style.transform='translate('+x+'px,'+y+'px) rotate('+(Math.random()*30-15)+'deg)';rb.textContent=msgs[dodge%4];}
+rb.addEventListener('pointerenter',flee);rb.addEventListener('pointerdown',flee);
+$('#yes').addEventListener('click',function(e){e.stopPropagation();burst(innerWidth/2,innerHeight/2,120,true);toast('Pakka? Screenshot le liya hai 📸')});
+})();
+</script>
+</body>
+</html>
